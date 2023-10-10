@@ -37,3 +37,6 @@ init:
 
 cs-fixer:
 	tools/php-cs-fixer/vendor/bin/php-cs-fixer fix src
+
+secret-regenerate:
+	$(DOCKER) $(BACKEND) php bin/console secret:regenerate-app-secret .env.local
