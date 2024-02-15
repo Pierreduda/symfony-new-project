@@ -2,11 +2,14 @@
 
 namespace App\Tests\Controller;
 
+use Symfony\Bundle\FrameworkBundle\KernelBrowser;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 use PHPUnit\Framework\Attributes\DataProvider;
 
 class DefaultControllerTest extends WebTestCase
 {
+    public KernelBrowser $client;
+
     public function setUp(): void
     {
         self::ensureKernelShutdown();
