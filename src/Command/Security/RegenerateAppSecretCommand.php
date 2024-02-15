@@ -31,10 +31,10 @@ class RegenerateAppSecretCommand extends Command
         $io = new SymfonyStyle($input, $output);
         $envname = $input->getArgument('envfile');
 
-        if ($envname && ($envname == '.env' || $envname == '.env.local')) {
+        if ($envname && ($envname === '.env' || $envname === '.env.local')) {
             $io->note(sprintf('You chose to update: %s', $envname));
             $secret = bin2hex(random_bytes(16));
-            $filepath = realpath($this->projectDir . '/' . $envname);
+            $filepath = realpath($this->projectDir.'/'.$envname);
             $io->note(sprintf('Editing file: %s', $filepath));
 
             $fileContent = file_get_contents($filepath);
@@ -42,10 +42,12 @@ class RegenerateAppSecretCommand extends Command
             $appNewSecret = "APP_SECRET=$secret";
             $result = preg_replace($regex, $appNewSecret, $fileContent);
             file_put_contents($filepath, $result);
-            $io->success('New APP_SECRET was generated: ' . $secret);
+            $io->success('New APP_SECRET was generated: '.$secret);
+
             return Command::SUCCESS;
         }
         $io->error("You did not provide a valid environment file to change");
+
         return Command::INVALID;
     }
 }
