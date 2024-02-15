@@ -13,13 +13,14 @@ update:
 	$(DOCKER) $(BACKEND) composer update
 %:
 	$(DOCKER) $(BACKEND) php bin/console make:$@
+migration:
+	$(DOCKER) $(BACKEND) php bin/console doctrine:migrations:migration
 migrate:
 	$(DOCKER) $(BACKEND) php bin/console doctrine:migrations:migrate
 generate:
 	$(DOCKER) $(BACKEND) php bin/console doctrine:migrations:generate
 watch:
 	$(DOCKER) $(FRONT) yarn encore dev --watch
-
 build:
 	$(DOCKER) $(FRONT) yarn encore dev
 up:
@@ -40,3 +41,10 @@ cs-fixer:
 
 secret-regenerate:
 	$(DOCKER) $(BACKEND) php bin/console secret:regenerate-app-secret .env.local
+own:
+	sudo chown pdud:pdud src -R
+	sudo chown pdud:pdud migrations -R
+	git add *
+tests:
+	rm -f tests.txt
+	$(DOCKER) $(BACKEND) ./phpunit tests > tests.txt
