@@ -35,16 +35,14 @@ init:
 	make update
 	make ddb
 	make migrate
-
 cs-fixer:
 	tools/php-cs-fixer/vendor/bin/php-cs-fixer fix src
-
 secret-regenerate:
 	$(DOCKER) $(BACKEND) php bin/console secret:regenerate-app-secret .env.local
 own:
 	sudo chown pdud:pdud src -R
 	sudo chown pdud:pdud migrations -R
 	git add *
-tests:
+phpunit:
 	rm -f tests.txt
-	$(DOCKER) $(BACKEND) ./phpunit tests > tests.txt
+	$(DOCKER) $(BACKEND) ./vendor/bin/phpunit > tests.txt
