@@ -15,7 +15,6 @@
 /.phpunit.cache/
 tests.txt
 test-results
-
 ###< phpunit/phpunit ###
 
 ###> symfony/webpack-encore-bundle ###
