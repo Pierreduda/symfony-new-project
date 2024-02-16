@@ -13,7 +13,7 @@ init:
 	docker compose run --rm --no-deps $(FRONT) bash -ci 'yarn install'
 	docker compose up -d
 	make update
-	make ddb
+	make db
 	make migrate
 
 ###> COMPOSER
