@@ -39,6 +39,7 @@ watch:
 	$(DOCKER) $(FRONT) yarn encore dev --watch
 yarn:
 	$(DOCKER) $(FRONT) yarn install
+
 ###> SYMFONY
 %:
 	$(DOCKER) $(BACKEND) php bin/console make:$@
