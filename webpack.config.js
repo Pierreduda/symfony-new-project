@@ -60,7 +60,8 @@ Encore
     .enableSassLoader()
 
     // uncomment if you use TypeScript
-    //.enableTypeScriptLoader()
+    .enableTypeScriptLoader()
+    .enableForkedTypeScriptTypesChecking()
 
     // uncomment if you use React
     //.enableReactPreset()

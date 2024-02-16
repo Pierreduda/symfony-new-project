@@ -1,0 +1,16 @@
+{ 
+    "compilerOptions": {
+        "strict": true,
+        "resolveJsonModule": true,
+        "esModuleInterop": true,
+        "noImplicitAny": false,
+        "strictNullChecks": false,
+        "moduleResolution": "node",
+        "types": ["jest", "node"],
+        "lib": [
+            "es2019",
+            "dom",
+            "dom.iterable"
+        ],
+    }
+}
